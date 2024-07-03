@@ -12,6 +12,7 @@ import Orders from './components/Products/Orders/Orders';
 import Inventory from './components/Inventory/Inventory';
 import Login from './components/Login/Login';
 import cartProductsLoader from './loaders/cartProductsLoader';
+import Checkout from './components/Checkout/Checkout';
 
 const router = createBrowserRouter([
  {
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
   children: [
     {
       path: '/',
-      element: <Shop></Shop>
+      element: <Shop></Shop>,
+      loader: () => fetch('http://localhost:5000/totalProducts')
     },
     {
       path: 'orders',
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
     {
       path: 'inventory',
       element:<Inventory></Inventory>
+    },
+    {
+      path: 'checkout',
+      element: <Checkout></Checkout>
     },
     {
       path:'login',
